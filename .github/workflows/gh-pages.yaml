@@ -2,7 +2,7 @@ name: Deploy Sphinx documentation to Pages
 
 on:
   push:
-    branches: [master] # branch to trigger deployment
+    branches: [master]  # branch to trigger deployment
 
 jobs:
   pages:
@@ -14,5 +14,18 @@ jobs:
       pages: write
       id-token: write
     steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    # Add a step to install dependencies (Sphinx and extensions if necessary)
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install sphinx
+
+    # Deploy the documentation, specifying the correct source directory
     - id: deployment
       uses: sphinx-notes/pages@v3
+      with:
+        docs-folder: docs/source  # Specify the correct directory containing conf.py
+        build-dir: docs/build/html  # Optional, default is '_build/html'
