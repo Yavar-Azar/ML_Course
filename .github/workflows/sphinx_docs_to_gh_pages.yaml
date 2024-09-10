@@ -19,7 +19,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.12'
+          python-version: '3.10'
 
       # Step 3: Install dependencies (Sphinx and other required libraries)
       - name: Install dependencies
@@ -33,7 +33,7 @@ jobs:
           cd docs
           make html
 
-      # Step 5: Deploy the generated HTML to GitHub Pages (gh-pages branch)
+      # Step 5: Deploy the generated HTML to GitHub Pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
