@@ -1,37 +1,41 @@
-name: Sphinx docs to gh-pages
+name: Deploy Documentation
 
+# Trigger the workflow when pushing to the master branch
 on:
   push:
     branches:
       - master
 
-# workflow_dispatch:        # Un comment line if you also want to trigger action manually
-
 jobs:
-  sphinx_docs_to_gh-pages:
+  deploy:
     runs-on: ubuntu-latest
-    name: Sphinx docs to gh-pages
+
     steps:
-      - uses: actions/checkout@v3
+      # Step 1: Check out the code from the repository
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Step 2: Set up Python
+      - name: Set up Python
+        uses: actions/setup-python@v2
         with:
-          fetch-depth: 0
-      - name: Make conda environment
-        uses: conda-incubator/setup-miniconda@v2
-        with:
-          python-version: 3.10    # Python version to build the html sphinx documentation
-          environment-file: devtools/conda-envs/docs_env.yaml    # Path to the documentation conda environment
-          auto-update-conda: false
-          auto-activate-base: false
-          show-channel-urls: true
-      - name: Installing the library
-        shell: bash -l {0}
+          python-version: '3.12'
+
+      # Step 3: Install dependencies (Sphinx and other required libraries)
+      - name: Install dependencies
         run: |
-          python setup.py install
-      - name: Running the Sphinx to gh-pages Action
-        uses: uibcdf/action-sphinx-docs-to-gh-pages@v2.1.0
+          python -m pip install --upgrade pip
+          pip install sphinx
+
+      # Step 4: Build the Sphinx documentation
+      - name: Build docs
+        run: |
+          cd docs
+          make html
+
+      # Step 5: Deploy the generated HTML to GitHub Pages (gh-pages branch)
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          branch: master
-          dir_docs: docs
-          sphinx-apidoc-opts: '--separate -o . ../'
-          sphinx-apidoc-exclude: '../*setup* ../*.ipynb'
-          sphinx-opts: ''
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs/build/html  # The path to the generated HTML files
