@@ -6,7 +6,7 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'ml-course'
+project = 'Machine-Learning'
 copyright = '2024, Yavar'
 author = 'Yavar'
 release = '0.1.0'
@@ -17,7 +17,7 @@ release = '0.1.0'
 extensions = []
 
 templates_path = ['_templates']
-exclude_patterns = []
+exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 
 
 
