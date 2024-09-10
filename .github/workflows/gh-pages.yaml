@@ -7,24 +7,30 @@ on:
 jobs:
   pages:
     runs-on: ubuntu-20.04
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+
     permissions:
       pages: write
       id-token: write
+
     steps:
+    # Step 1: Checkout the repository
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Install dependencies
+    # Step 2: Install Python and dependencies
+    - name: Set up Python and install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install sphinx
 
-    # Specify the correct docs-folder (where conf.py is located)
-    - id: deployment
-      uses: sphinx-notes/pages@v3
+    # Step 3: Build the documentation using sphinx-build
+    - name: Build Sphinx documentation
+      run: |
+        sphinx-build docs/source docs/build/html  # Manually build the documentation
+
+    # Step 4: Deploy to GitHub Pages using the built HTML
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
       with:
-        docs-folder: docs/source    # This must point to the folder containing conf.py
-        build-dir: docs/build/html  # Specify where the HTML will be built
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: docs/build/html  # Use the correct build directory for HTML files
