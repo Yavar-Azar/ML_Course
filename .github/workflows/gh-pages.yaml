@@ -17,15 +17,14 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    # Add a step to install dependencies (Sphinx and extensions if necessary)
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install sphinx
 
-    # Deploy the documentation, specifying the correct source directory
+    # Specify the correct docs-folder (where conf.py is located)
     - id: deployment
       uses: sphinx-notes/pages@v3
       with:
-        docs-folder: docs/source  # Specify the correct directory containing conf.py
-        build-dir: docs/build/html  # Optional, default is '_build/html'
+        docs-folder: docs/source    # This must point to the folder containing conf.py
+        build-dir: docs/build/html  # Specify where the HTML will be built
