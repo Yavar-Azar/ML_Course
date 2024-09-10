@@ -11,6 +11,7 @@ Welcome to ml-course's documentation!
    :caption: Contents:
 
    intro/machine_learning_intro
+   session1/steps.rst
 
 
 Indices and tables
