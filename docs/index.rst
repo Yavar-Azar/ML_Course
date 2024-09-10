@@ -8,10 +8,10 @@ Welcome to ml-course's documentation!
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
 
    intro/machine_learning_intro
    session1/steps.rst
+   session1/test1.ipynb
 
 
 Indices and tables

@@ -11,9 +11,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y pandoc
       - name: Install dependencies
         run: |
-          pip install sphinx
+          pip install sphinx nbsphinx ipykernel jupyter numpy pandas matplotlib
       - name: Sphinx build
         run: |
           cd docs
