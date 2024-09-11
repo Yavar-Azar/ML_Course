@@ -11,7 +11,7 @@ Welcome to ml-course's documentation!
 
    intro/machine_learning_intro
    session1/steps.rst
-   session1/test1.ipynb
+   session1/example1.ipynb
 
 
 Indices and tables
