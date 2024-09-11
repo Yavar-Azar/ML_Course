@@ -1,0 +1,701 @@
+Age,Gender,Music_Genre
+52,0,Rock
+39,0,Pop
+44,1,Classical
+57,0,Jazz
+53,1,Electronic
+25,0,Hip Hop
+44,0,Country
+33,1,Rock
+33,0,Pop
+39,1,Classical
+36,1,Jazz
+49,0,Electronic
+42,1,Hip Hop
+36,0,Country
+39,1,Rock
+38,0,Pop
+49,0,Classical
+32,0,Jazz
+38,0,Electronic
+26,1,Hip Hop
+9,0,Country
+41,0,Rock
+43,0,Pop
+27,1,Classical
+57,0,Jazz
+20,0,Electronic
+35,0,Hip Hop
+33,1,Country
+50,0,Rock
+49,0,Pop
+36,1,Classical
+38,0,Jazz
+26,1,Electronic
+15,1,Hip Hop
+31,0,Country
+36,1,Rock
+47,0,Pop
+47,0,Classical
+31,0,Jazz
+31,0,Electronic
+24,0,Hip Hop
+20,0,Country
+17,1,Rock
+54,1,Pop
+29,0,Classical
+30,1,Jazz
+22,0,Electronic
+42,0,Hip Hop
+18,0,Country
+32,0,Rock
+26,0,Pop
+38,1,Classical
+29,0,Jazz
+23,1,Electronic
+34,1,Hip Hop
+39,0,Country
+35,1,Rock
+38,0,Pop
+28,1,Classical
+31,0,Jazz
+28,0,Electronic
+31,0,Hip Hop
+26,0,Country
+17,0,Rock
+36,1,Pop
+30,1,Classical
+18,1,Jazz
+39,0,Electronic
+25,1,Hip Hop
+35,0,Country
+42,1,Rock
+36,1,Pop
+46,0,Classical
+22,1,Jazz
+39,0,Electronic
+28,0,Hip Hop
+26,0,Country
+29,0,Rock
+31,1,Pop
+35,0,Classical
+23,0,Jazz
+44,1,Electronic
+39,0,Hip Hop
+19,1,Country
+49,0,Rock
+53,0,Pop
+46,0,Classical
+33,1,Jazz
+24,0,Electronic
+45,1,Hip Hop
+30,0,Country
+47,0,Rock
+37,0,Pop
+44,1,Classical
+38,0,Jazz
+42,0,Electronic
+35,0,Hip Hop
+52,0,Country
+36,0,Rock
+39,0,Pop
+38,0,Classical
+15,0,Jazz
+16,1,Electronic
+31,1,Hip Hop
+16,0,Country
+38,1,Rock
+22,1,Pop
+19,1,Classical
+38,1,Jazz
+35,1,Electronic
+38,0,Hip Hop
+31,0,Country
+18,1,Rock
+38,0,Pop
+23,0,Classical
+30,0,Jazz
+31,1,Electronic
+23,1,Hip Hop
+29,1,Country
+31,0,Rock
+27,0,Pop
+17,0,Classical
+27,0,Jazz
+34,1,Electronic
+20,0,Hip Hop
+23,0,Country
+21,1,Rock
+37,1,Pop
+29,0,Classical
+27,0,Jazz
+19,1,Electronic
+28,1,Hip Hop
+20,0,Country
+25,1,Rock
+20,0,Pop
+29,0,Classical
+29,0,Jazz
+23,0,Electronic
+27,1,Hip Hop
+17,0,Country
+14,0,Rock
+28,1,Pop
+26,1,Classical
+29,1,Jazz
+41,1,Electronic
+31,0,Hip Hop
+18,0,Country
+32,0,Rock
+15,1,Pop
+21,0,Classical
+24,0,Jazz
+36,1,Electronic
+19,1,Hip Hop
+19,0,Country
+24,0,Rock
+20,1,Pop
+32,0,Classical
+17,0,Jazz
+16,1,Electronic
+21,0,Hip Hop
+21,0,Country
+38,1,Rock
+31,1,Pop
+25,1,Classical
+16,0,Jazz
+30,1,Electronic
+17,0,Hip Hop
+14,1,Country
+33,1,Rock
+27,1,Pop
+31,0,Classical
+27,1,Jazz
+30,1,Electronic
+20,1,Hip Hop
+17,0,Country
+29,0,Rock
+19,1,Pop
+20,1,Classical
+21,0,Jazz
+25,1,Electronic
+22,0,Hip Hop
+15,1,Country
+20,1,Rock
+9,1,Pop
+29,0,Classical
+13,1,Jazz
+17,0,Electronic
+25,1,Hip Hop
+19,1,Country
+35,1,Rock
+15,1,Pop
+26,0,Classical
+24,0,Jazz
+16,0,Electronic
+28,0,Hip Hop
+23,0,Country
+30,0,Rock
+30,0,Pop
+40,0,Classical
+34,0,Jazz
+40,1,Electronic
+42,0,Hip Hop
+58,1,Country
+52,1,Rock
+52,1,Pop
+25,1,Classical
+44,1,Jazz
+36,0,Electronic
+48,1,Hip Hop
+43,1,Country
+55,1,Rock
+48,1,Pop
+54,0,Classical
+39,1,Jazz
+33,0,Electronic
+40,0,Hip Hop
+44,1,Country
+49,0,Rock
+72,1,Pop
+44,0,Classical
+33,1,Jazz
+40,1,Electronic
+39,0,Hip Hop
+50,1,Country
+26,0,Rock
+45,0,Pop
+46,0,Classical
+47,1,Jazz
+37,0,Electronic
+42,0,Hip Hop
+27,0,Country
+39,1,Rock
+38,0,Pop
+49,1,Classical
+31,0,Jazz
+54,1,Electronic
+62,0,Hip Hop
+20,0,Country
+50,1,Rock
+53,1,Pop
+37,0,Classical
+40,1,Jazz
+43,0,Electronic
+41,1,Hip Hop
+41,1,Country
+24,0,Rock
+58,0,Pop
+57,1,Classical
+35,0,Jazz
+27,0,Electronic
+51,1,Hip Hop
+38,0,Country
+46,1,Rock
+41,1,Pop
+53,0,Classical
+53,0,Jazz
+36,1,Electronic
+28,1,Hip Hop
+26,1,Country
+52,1,Rock
+30,0,Pop
+38,0,Classical
+37,1,Jazz
+44,0,Electronic
+21,1,Hip Hop
+47,1,Country
+51,1,Rock
+46,0,Pop
+41,0,Classical
+46,0,Jazz
+49,1,Electronic
+11,1,Hip Hop
+68,1,Country
+49,1,Rock
+37,1,Pop
+40,1,Classical
+50,0,Jazz
+43,0,Electronic
+20,0,Hip Hop
+69,1,Country
+43,1,Rock
+57,0,Pop
+36,0,Classical
+63,0,Jazz
+48,0,Electronic
+52,1,Hip Hop
+32,1,Country
+59,1,Rock
+53,1,Pop
+60,0,Classical
+37,1,Jazz
+39,1,Electronic
+72,0,Hip Hop
+32,1,Country
+43,0,Rock
+58,1,Pop
+46,1,Classical
+51,0,Jazz
+40,1,Electronic
+49,1,Hip Hop
+26,0,Country
+56,0,Rock
+38,1,Pop
+33,1,Classical
+46,1,Jazz
+35,1,Electronic
+26,1,Hip Hop
+26,0,Country
+46,1,Rock
+38,0,Pop
+38,0,Classical
+50,1,Jazz
+28,0,Electronic
+32,1,Hip Hop
+36,0,Country
+40,0,Rock
+39,0,Pop
+37,0,Classical
+39,0,Jazz
+38,0,Electronic
+32,1,Hip Hop
+31,0,Country
+42,0,Rock
+31,0,Pop
+28,0,Classical
+36,0,Jazz
+38,1,Electronic
+62,0,Hip Hop
+32,1,Country
+49,1,Rock
+47,1,Pop
+28,1,Classical
+47,1,Jazz
+28,0,Electronic
+13,1,Hip Hop
+46,1,Country
+22,0,Rock
+44,1,Pop
+33,1,Classical
+56,0,Jazz
+50,0,Electronic
+35,1,Hip Hop
+33,1,Country
+27,1,Rock
+35,0,Pop
+37,1,Classical
+36,0,Jazz
+41,1,Electronic
+45,1,Hip Hop
+43,1,Country
+32,1,Rock
+25,0,Pop
+53,1,Classical
+33,1,Jazz
+33,0,Electronic
+34,0,Hip Hop
+21,1,Country
+35,1,Rock
+35,1,Pop
+46,1,Classical
+46,1,Jazz
+40,0,Electronic
+49,1,Hip Hop
+43,1,Country
+39,0,Rock
+41,1,Pop
+38,0,Classical
+36,0,Jazz
+37,0,Electronic
+28,1,Hip Hop
+42,0,Country
+30,0,Rock
+48,0,Pop
+37,0,Classical
+40,0,Jazz
+44,1,Electronic
+46,1,Hip Hop
+24,0,Country
+37,0,Rock
+48,1,Pop
+23,1,Classical
+43,0,Jazz
+17,1,Electronic
+29,0,Hip Hop
+40,1,Country
+23,0,Rock
+30,0,Pop
+25,1,Classical
+56,1,Jazz
+41,1,Electronic
+45,1,Hip Hop
+37,0,Country
+36,1,Rock
+23,1,Pop
+37,1,Classical
+32,0,Jazz
+48,0,Electronic
+51,0,Hip Hop
+54,1,Country
+48,1,Rock
+25,1,Pop
+22,1,Classical
+35,1,Jazz
+32,1,Electronic
+17,0,Hip Hop
+32,0,Country
+35,0,Rock
+30,0,Pop
+28,1,Classical
+24,1,Jazz
+19,1,Electronic
+35,0,Hip Hop
+27,0,Country
+28,1,Rock
+42,0,Pop
+34,0,Classical
+32,1,Jazz
+30,0,Electronic
+40,0,Hip Hop
+42,0,Country
+36,1,Rock
+34,0,Pop
+15,0,Classical
+30,0,Jazz
+29,0,Electronic
+30,0,Hip Hop
+36,1,Country
+10,1,Rock
+26,0,Pop
+31,1,Classical
+26,0,Jazz
+20,0,Electronic
+36,0,Hip Hop
+31,0,Country
+23,0,Rock
+32,0,Pop
+35,0,Classical
+30,1,Jazz
+35,0,Electronic
+30,0,Hip Hop
+27,0,Country
+21,0,Rock
+29,1,Pop
+31,0,Classical
+36,1,Jazz
+29,1,Electronic
+33,0,Hip Hop
+23,0,Country
+24,0,Rock
+29,1,Pop
+22,1,Classical
+35,0,Jazz
+33,1,Electronic
+31,0,Hip Hop
+32,0,Country
+44,1,Rock
+26,1,Pop
+14,0,Classical
+31,0,Jazz
+29,1,Electronic
+26,0,Hip Hop
+23,0,Country
+26,0,Rock
+31,0,Pop
+26,1,Classical
+46,0,Jazz
+23,1,Electronic
+24,0,Hip Hop
+13,0,Country
+31,0,Rock
+15,0,Pop
+26,0,Classical
+28,0,Jazz
+25,0,Electronic
+42,0,Hip Hop
+36,0,Country
+39,0,Rock
+23,1,Pop
+37,1,Classical
+33,0,Jazz
+35,0,Electronic
+37,1,Hip Hop
+23,1,Country
+27,1,Rock
+36,0,Pop
+11,0,Classical
+40,0,Jazz
+33,0,Electronic
+29,1,Hip Hop
+31,1,Country
+22,0,Rock
+27,0,Pop
+37,1,Classical
+39,0,Jazz
+48,0,Electronic
+29,0,Hip Hop
+25,0,Country
+26,0,Rock
+22,0,Pop
+29,0,Classical
+27,0,Jazz
+24,0,Electronic
+32,0,Hip Hop
+23,1,Country
+22,0,Rock
+20,0,Pop
+13,0,Classical
+14,0,Jazz
+16,0,Electronic
+34,0,Hip Hop
+31,1,Country
+34,1,Rock
+15,0,Pop
+11,1,Classical
+20,0,Jazz
+26,0,Electronic
+28,0,Hip Hop
+32,0,Country
+26,0,Rock
+37,1,Pop
+23,0,Classical
+18,1,Jazz
+13,1,Electronic
+18,1,Hip Hop
+26,0,Country
+18,0,Rock
+31,0,Pop
+34,1,Classical
+8,0,Jazz
+31,0,Electronic
+9,1,Hip Hop
+27,1,Country
+33,0,Rock
+25,1,Pop
+16,1,Classical
+20,0,Jazz
+23,1,Electronic
+23,1,Hip Hop
+23,0,Country
+24,0,Rock
+26,0,Pop
+16,0,Classical
+23,1,Jazz
+35,0,Electronic
+22,1,Hip Hop
+21,1,Country
+32,0,Rock
+7,1,Pop
+33,1,Classical
+20,1,Jazz
+26,0,Electronic
+25,0,Hip Hop
+31,1,Country
+23,1,Rock
+20,0,Pop
+34,0,Classical
+8,0,Jazz
+25,1,Electronic
+15,0,Hip Hop
+19,0,Country
+39,0,Rock
+24,0,Pop
+26,1,Classical
+12,1,Jazz
+19,0,Electronic
+26,0,Hip Hop
+27,0,Country
+29,1,Rock
+25,1,Pop
+28,1,Classical
+28,0,Jazz
+12,1,Electronic
+25,0,Hip Hop
+30,0,Country
+29,0,Rock
+22,1,Pop
+19,0,Classical
+17,1,Jazz
+24,1,Electronic
+32,0,Hip Hop
+11,0,Country
+20,0,Rock
+17,0,Pop
+30,0,Classical
+21,0,Jazz
+21,1,Electronic
+23,0,Hip Hop
+28,0,Country
+22,1,Rock
+3,1,Pop
+28,1,Classical
+28,0,Jazz
+23,1,Electronic
+17,0,Hip Hop
+27,0,Country
+27,0,Rock
+21,0,Pop
+23,0,Classical
+18,1,Jazz
+23,0,Electronic
+19,1,Hip Hop
+39,1,Country
+25,0,Rock
+37,1,Pop
+20,1,Classical
+29,1,Jazz
+33,1,Electronic
+18,1,Hip Hop
+36,1,Country
+31,1,Rock
+17,0,Pop
+21,1,Classical
+41,0,Jazz
+43,1,Electronic
+33,0,Hip Hop
+39,1,Country
+37,1,Rock
+38,0,Pop
+47,0,Classical
+19,1,Jazz
+41,1,Electronic
+31,1,Hip Hop
+32,1,Country
+31,0,Rock
+31,0,Pop
+22,1,Classical
+36,0,Jazz
+51,0,Electronic
+34,0,Hip Hop
+34,0,Country
+28,1,Rock
+33,1,Pop
+39,0,Classical
+31,1,Jazz
+30,1,Electronic
+39,1,Hip Hop
+25,1,Country
+37,0,Rock
+43,0,Pop
+48,1,Classical
+34,0,Jazz
+48,0,Electronic
+45,1,Hip Hop
+25,1,Country
+22,1,Rock
+31,1,Pop
+45,0,Classical
+34,1,Jazz
+28,1,Electronic
+50,0,Hip Hop
+37,0,Country
+11,0,Rock
+38,0,Pop
+40,0,Classical
+37,1,Jazz
+39,1,Electronic
+34,0,Hip Hop
+21,0,Country
+31,0,Rock
+25,0,Pop
+25,0,Classical
+22,1,Jazz
+39,1,Electronic
+35,1,Hip Hop
+30,1,Country
+28,1,Rock
+34,1,Pop
+45,1,Classical
+14,1,Jazz
+38,1,Electronic
+29,1,Hip Hop
+16,0,Country
+15,1,Rock
+25,0,Pop
+37,1,Classical
+38,1,Jazz
+25,0,Electronic
+45,0,Hip Hop
+49,0,Country
+38,1,Rock
+29,0,Pop
+46,1,Classical
+42,1,Jazz
+43,0,Electronic
+28,1,Hip Hop
+6,0,Country
+56,0,Rock
+18,1,Pop
+34,1,Classical
+58,0,Jazz
+38,1,Electronic
+44,0,Hip Hop
+19,1,Country
+17,1,Rock
+29,1,Pop
+45,0,Classical
+31,0,Jazz
+27,0,Electronic
+36,1,Hip Hop
+45,1,Country
