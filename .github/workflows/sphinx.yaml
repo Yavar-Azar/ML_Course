@@ -17,7 +17,7 @@ jobs:
           sudo apt-get install -y pandoc
       - name: Install dependencies
         run: |
-          pip install sphinx nbsphinx ipykernel jupyter numpy pandas matplotlib scikit-learn
+          pip install sphinx nbsphinx ipykernel jupyter numpy pandas matplotlib scikit-learn sphinx-typo3-theme
       - name: Sphinx build
         run: |
           cd docs
