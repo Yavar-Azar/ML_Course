@@ -10,6 +10,7 @@ Welcome to ml-course's documentation!
    :maxdepth: 2
 
    intro/machine_learning_intro
+   regression/regression.ipynb
    session1/steps.rst
    session1/example1.ipynb
 
