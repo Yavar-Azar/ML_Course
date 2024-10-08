@@ -18,6 +18,7 @@ release = '0.1.0'
 extensions = [
     'nbsphinx',  # Add this line
     'sphinx.ext.mathjax',  # Assuming you have this and possibly other extensions
+    'sphinx_typo3_theme'
 ]
 
 
@@ -33,5 +34,5 @@ nbsphinx_output_format = 'svg'  # Use 'svg' for vector graphics or 'png' for ras
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
-html_theme = 'alabaster'
+html_theme = 'sphinx_typo3_theme'
 html_static_path = ['_static']
