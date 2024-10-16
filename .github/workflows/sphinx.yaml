@@ -10,18 +10,44 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
+      # Set up Python and create a cache for dependencies
       - uses: actions/setup-python@v5
+
+      # Cache the Python dependencies
+      - name: Cache pip dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      # Install system dependencies
       - name: Install system dependencies
         run: |
           sudo apt-get update
           sudo apt-get install -y pandoc
+
+      # Set up virtual environment
+      - name: Set up virtual environment
+        run: |
+          python -m venv .venv
+          source .venv/bin/activate
+
+      # Install dependencies
       - name: Install dependencies
         run: |
-          pip install sphinx nbsphinx ipykernel jupyter numpy pandas matplotlib scikit-learn sphinx_book_theme tensorflow
+          .venv/bin/pip install sphinx nbsphinx ipykernel jupyter numpy pandas matplotlib scikit-learn sphinx_book_theme tensorflow
+	  
+      # Build Sphinx documentation
       - name: Sphinx build
         run: |
+          source .venv/bin/activate
           cd docs
           make html
+
+      # Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
