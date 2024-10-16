@@ -9,11 +9,8 @@ Welcome to ml-course's documentation!
 .. toctree::
    :maxdepth: 2
 
-   intro/machine_learning_intro
-   session1/steps.rst
-   regression/regression.ipynb
-   neuralnetwork/nn
-   session1/example1.ipynb
+   neuralnetwork.ipynb
+   lstm.ipynb
 
 
 Indices and tables
