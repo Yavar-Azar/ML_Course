@@ -1,0 +1,661 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Linear Regression &#8212; Machine-Learning 0.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=a35ea3b2" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=a1637f0b"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'regression/regression';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Welcome to ml-course’s documentation!" href="../neuralnetwork/nn.html" />
+    <link rel="prev" title="Comprehensive Machine Learning Workflow" href="../session1/steps.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Machine-Learning 0.1.0 documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../intro/machine_learning_intro.html">Introduction to Machine Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session1/steps.html">Comprehensive Machine Learning Workflow</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Linear Regression</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../neuralnetwork/nn.html">Welcome to ml-course’s documentation!</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../neuralnetwork/neuralnetwork.html">Introduction to Neural Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../neuralnetwork/lstm.html">LSTM</a></li>
+
+
+
+
+</ul>
+</details></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../session1/example1.html">Example 1</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/regression/regression.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Linear Regression</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Variables-in-Linear-Regression">Variables in Linear Regression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#The-Linear-Regression-Model">The Linear Regression Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Estimating-the-Regression-Function">Estimating the Regression Function</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Residuals-and-Error-Minimization">Residuals and Error Minimization</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Multiple-Linear-Regression">Multiple Linear Regression</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Polynomial-Regression">Polynomial Regression</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Underfitting-and-Overfitting">Underfitting and Overfitting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Underfitting">Underfitting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Overfitting">Overfitting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Finding-the-Right-Balance">Finding the Right Balance</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Regression-with-Scikit-Learn">Regression with Scikit-Learn</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#STEP-5.-Prediction">STEP 5. Prediction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Multiple-Linear-Regression-With-scikit-learn">Multiple Linear Regression With scikit-learn</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="Linear-Regression">
+<h1>Linear Regression<a class="headerlink" href="#Linear-Regression" title="Link to this heading">#</a></h1>
+<p>Linear regression is a statistical method used to model the relationship between a <strong>dependent variable</strong> (the outcome you’re trying to predict) and one or more <strong>independent variables</strong> (the predictors or factors that influence the outcome). The goal of linear regression is to find a mathematical function that maps the independent variables to the dependent variable as accurately as possible.</p>
+<section id="Variables-in-Linear-Regression">
+<h2>Variables in Linear Regression<a class="headerlink" href="#Variables-in-Linear-Regression" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>The dependent variable is often denoted as <span class="math notranslate nohighlight">\(y\)</span>, which represents the output or response.</p></li>
+<li><p>The independent variables are represented as <span class="math notranslate nohighlight">\(x_1, x_2, \dots, x_r\)</span>, where <span class="math notranslate nohighlight">\(r\)</span> is the number of independent variables or predictors.</p></li>
+</ul>
+<p>If we have multiple independent variables, we can group them into a vector <span class="math notranslate nohighlight">\(\mathbf{x} = (x_1, x_2, \dots, x_r)\)</span>.</p>
+</section>
+<section id="The-Linear-Regression-Model">
+<h2>The Linear Regression Model<a class="headerlink" href="#The-Linear-Regression-Model" title="Link to this heading">#</a></h2>
+<p>Linear regression assumes a <strong>linear relationship</strong> between the dependent variable <span class="math notranslate nohighlight">\(y\)</span> and the independent variables <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>. This relationship can be expressed by the following equation, known as the <strong>regression equation</strong>:</p>
+<div class="math notranslate nohighlight">
+\[y = \beta_0 + \beta_1 x_1 + \cdots + \beta_r x_r + \varepsilon\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\beta_0\)</span> is the <strong>intercept</strong>, representing the value of <span class="math notranslate nohighlight">\(y\)</span> when all <span class="math notranslate nohighlight">\(x\)</span> values are zero.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\beta_1, \beta_2, \dots, \beta_r\)</span> are the <strong>regression coefficients</strong>, which indicate how much <span class="math notranslate nohighlight">\(y\)</span> changes with a one-unit change in each corresponding <span class="math notranslate nohighlight">\(x_i\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\varepsilon\)</span> is the <strong>error term</strong> (or residual), accounting for any variability in <span class="math notranslate nohighlight">\(y\)</span> that cannot be explained by the linear relationship with <span class="math notranslate nohighlight">\(x_1, \dots, x_r\)</span>.</p></li>
+</ul>
+</section>
+<section id="Estimating-the-Regression-Function">
+<h2>Estimating the Regression Function<a class="headerlink" href="#Estimating-the-Regression-Function" title="Link to this heading">#</a></h2>
+<p>To estimate the coefficients <span class="math notranslate nohighlight">\(\beta_0, \beta_1, \dots, \beta_r\)</span> from the data, we calculate their <strong>estimators</strong>, which are typically denoted as <span class="math notranslate nohighlight">\(b_0, b_1, \dots, b_r\)</span>. Using these estimators, we can write the <strong>estimated regression function</strong> as:</p>
+<div class="math notranslate nohighlight">
+\[f(\mathbf{x}) = b_0 + b_1 x_1 + \cdots + b_r x_r\]</div>
+<p>This function predicts the value of <span class="math notranslate nohighlight">\(y\)</span> based on the input values of <span class="math notranslate nohighlight">\(x_1, \dots, x_r\)</span>. The goal of linear regression is to find the values of <span class="math notranslate nohighlight">\(b_0, b_1, \dots, b_r\)</span> that result in the best possible predictions.</p>
+</section>
+<section id="Residuals-and-Error-Minimization">
+<h2>Residuals and Error Minimization<a class="headerlink" href="#Residuals-and-Error-Minimization" title="Link to this heading">#</a></h2>
+<p>For each observation <span class="math notranslate nohighlight">\(i\)</span>, we can compute the <strong>predicted response</strong> <span class="math notranslate nohighlight">\(f(\mathbf{x}_i)\)</span>, and compare it to the actual response <span class="math notranslate nohighlight">\(y_i\)</span>. The difference between them is called the <strong>residual</strong>:</p>
+<div class="math notranslate nohighlight">
+\[\text{Residual} = y_i - f(\mathbf{x}_i)\]</div>
+<p>The smaller the residuals, the better the model fits the data. Therefore, linear regression aims to find the coefficients <span class="math notranslate nohighlight">\(b_0, b_1, \dots, b_r\)</span> that minimize the overall error, often measured as the <strong>sum of squared residuals (SSR)</strong>:</p>
+<div class="math notranslate nohighlight">
+\[SSR = \sum_{i=1}^{n} \left( y_i - f(\mathbf{x}_i) \right)^2\]</div>
+<p>This method of minimizing the SSR to determine the best-fitting line is known as the <strong>ordinary least squares (OLS)</strong> method.</p>
+<section id="Multiple-Linear-Regression">
+<h3>Multiple Linear Regression<a class="headerlink" href="#Multiple-Linear-Regression" title="Link to this heading">#</a></h3>
+<p><strong>Multiple linear regression</strong> is an extension of simple linear regression when you have more than one independent variable. The relationship is still linear, but now with multiple predictors influencing the dependent variable.</p>
+<p>For example, if there are two independent variables <span class="math notranslate nohighlight">\(x_1\)</span> and <span class="math notranslate nohighlight">\(x_2\)</span>, the estimated regression function is:</p>
+<div class="math notranslate nohighlight">
+\[f(x_1, x_2) = b_0 + b_1 x_1 + b_2 x_2\]</div>
+<p>This equation represents a <strong>regression plane</strong> in three-dimensional space. The goal is to find the values of <span class="math notranslate nohighlight">\(b_0, b_1\)</span>, and <span class="math notranslate nohighlight">\(b_2\)</span> that make the plane fit the data points as closely as possible.</p>
+<p>In general, for <span class="math notranslate nohighlight">\(r\)</span> independent variables, the regression equation becomes:</p>
+<div class="math notranslate nohighlight">
+\[f(x_1, \dots, x_r) = b_0 + b_1 x_1 + \cdots + b_r x_r\]</div>
+<p>There are <span class="math notranslate nohighlight">\(r + 1\)</span> unknown coefficients (including the intercept <span class="math notranslate nohighlight">\(b_0\)</span>), which need to be determined by minimizing the SSR.</p>
+</section>
+<section id="Polynomial-Regression">
+<h3>Polynomial Regression<a class="headerlink" href="#Polynomial-Regression" title="Link to this heading">#</a></h3>
+<p><strong>Polynomial regression</strong> is a form of linear regression where the relationship between the dependent and independent variables is modeled as a polynomial. It extends linear regression by allowing for non-linear relationships between the variables, while still keeping the model linear in the coefficients.</p>
+<p>For example, in polynomial regression, the regression function may include terms like:</p>
+<div class="math notranslate nohighlight">
+\[f(x_1) = b_0 + b_1 x_1 + b_2 x_1^2 + b_3 x_1^3\]</div>
+<p>Or even interaction terms such as:</p>
+<div class="math notranslate nohighlight">
+\[f(x_1, x_2) = b_0 + b_1 x_1 + b_2 x_1^2 + b_3 x_1 x_2\]</div>
+<p>In this case, the model can capture more complex relationships by incorporating higher-degree terms or interactions between variables. While the model includes non-linear terms (such as <span class="math notranslate nohighlight">\(x_1^2\)</span> or <span class="math notranslate nohighlight">\(x_1 x_2\)</span>), it is still considered a form of <strong>linear regression</strong> because the coefficients (<span class="math notranslate nohighlight">\(b_0, b_1, b_2, \dots\)</span>) appear linearly.</p>
+</section>
+</section>
+<section id="Underfitting-and-Overfitting">
+<h2>Underfitting and Overfitting<a class="headerlink" href="#Underfitting-and-Overfitting" title="Link to this heading">#</a></h2>
+<p>When implementing polynomial regression, a critical question arises: how do you choose the optimal degree for the polynomial regression function?</p>
+<p>Unfortunately, there is no universal rule for selecting the best degree—it largely depends on the specific problem and dataset. However, it’s important to understand two common issues that can arise from selecting the wrong degree: <strong>underfitting</strong> and <strong>overfitting</strong>.</p>
+</section>
+<section id="Underfitting">
+<h2>Underfitting<a class="headerlink" href="#Underfitting" title="Link to this heading">#</a></h2>
+<p><strong>Underfitting</strong> occurs when the model is too simple to capture the underlying patterns in the data. As a result, it fails to accurately represent the relationships between the variables. This often leads to a low <span class="math notranslate nohighlight">\(R^2\)</span> score, indicating that the model explains very little of the variance in the data. Additionally, an underfit model will perform poorly when applied to both the training data and new, unseen data.</p>
+<p>Underfitting typically happens when the polynomial degree is too low, and the model lacks the complexity needed to capture the true behavior of the data.</p>
+</section>
+<section id="Overfitting">
+<h2>Overfitting<a class="headerlink" href="#Overfitting" title="Link to this heading">#</a></h2>
+<p><strong>Overfitting</strong>, on the other hand, happens when the model becomes too complex and starts to learn not only the underlying data relationships but also random noise and fluctuations in the training data. This can result in a model that fits the training data almost perfectly, often yielding a very high <span class="math notranslate nohighlight">\(R^2\)</span> score on the known data.</p>
+<p>However, the problem with overfitting is that the model doesn’t generalize well to new, unseen data. While it performs excellently on the training data, its performance drops significantly when applied to new datasets, often resulting in a much lower <span class="math notranslate nohighlight">\(R^2\)</span> score. Overfitting is common when the polynomial degree is too high, or when the model includes too many features or terms.</p>
+</section>
+<section id="Finding-the-Right-Balance">
+<h2>Finding the Right Balance<a class="headerlink" href="#Finding-the-Right-Balance" title="Link to this heading">#</a></h2>
+<p>To avoid both underfitting and overfitting, it’s essential to find the right balance between model simplicity and complexity. Techniques like <strong>cross-validation</strong> and <strong>regularization</strong> can help in determining the optimal degree of the polynomial, ensuring that the model generalizes well to new data while accurately capturing the underlying relationships in the training data.</p>
+<section id="Regression-with-Scikit-Learn">
+<h3>Regression with Scikit-Learn<a class="headerlink" href="#Regression-with-Scikit-Learn" title="Link to this heading">#</a></h3>
+<p>Let’s begin with the simplest scenario: <strong>simple linear regression</strong>. There are five key steps involved in implementing a linear regression model:</p>
+<ol class="arabic simple">
+<li><p><strong>Import necessary packages and libraries</strong>: Start by loading the tools and libraries you’ll need for the task.</p></li>
+<li><p><strong>Prepare and process your data</strong>: Input the dataset you’ll be working with and apply any necessary transformations or preprocessing steps.</p></li>
+<li><p><strong>Build and train the regression model</strong>: Create your linear regression model and train it using the available data.</p></li>
+<li><p><strong>Evaluate the model’s performance</strong>: Check the model’s results to assess if it fits the data well and meets your expectations.</p></li>
+<li><p><strong>Make predictions with the model</strong>: Once satisfied with the model, use it to make predictions on new data.</p></li>
+</ol>
+<p>These steps generally apply to most regression models, regardless of the specific approach or technique. As you proceed through this guide, you’ll see how to follow these steps for various types of regression scenarios.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">55</span><span class="p">])</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">38</span><span class="p">])</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="n">r_sq</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;coefficient of determination: </span><span class="si">{</span><span class="n">r_sq</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;intercept: </span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="n">intercept_</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;slope: </span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="n">coef_</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+coefficient of determination: 0.7158756137479542
+intercept: 5.633333333333329
+slope: [0.54]
+</pre></div></div>
+</div>
+</section>
+</section>
+<section id="STEP-5.-Prediction">
+<h2>STEP 5. Prediction<a class="headerlink" href="#STEP-5.-Prediction" title="Link to this heading">#</a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">y_pred</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+array([ 8.33333333, 13.73333333, 19.13333333, 24.53333333, 29.93333333,
+       35.33333333])
+</pre></div></div>
+</div>
+</section>
+<section id="Multiple-Linear-Regression-With-scikit-learn">
+<h2>Multiple Linear Regression With scikit-learn<a class="headerlink" href="#Multiple-Linear-Regression-With-scikit-learn" title="Link to this heading">#</a></h2>
+<p>The main difference is that your x array will now have two or more columns.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">15</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">25</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">35</span><span class="p">,</span> <span class="mi">11</span><span class="p">],</span> <span class="p">[</span><span class="mi">45</span><span class="p">,</span> <span class="mi">15</span><span class="p">],</span> <span class="p">[</span><span class="mi">55</span><span class="p">,</span> <span class="mi">34</span><span class="p">],</span> <span class="p">[</span><span class="mi">60</span><span class="p">,</span> <span class="mi">35</span><span class="p">]</span>
+<span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">38</span><span class="p">,</span> <span class="mi">43</span><span class="p">]</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="n">r_sq</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;coefficient of determination: </span><span class="si">{</span><span class="n">r_sq</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;intercept: </span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="n">intercept_</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;coefficients: </span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="n">coef_</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+coefficient of determination: 0.8615939258756776
+intercept: 5.52257927519819
+coefficients: [0.44706965 0.25502548]
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../session1/steps.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Comprehensive Machine Learning Workflow</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../neuralnetwork/nn.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Welcome to ml-course’s documentation!</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Variables-in-Linear-Regression">Variables in Linear Regression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#The-Linear-Regression-Model">The Linear Regression Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Estimating-the-Regression-Function">Estimating the Regression Function</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Residuals-and-Error-Minimization">Residuals and Error Minimization</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Multiple-Linear-Regression">Multiple Linear Regression</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Polynomial-Regression">Polynomial Regression</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Underfitting-and-Overfitting">Underfitting and Overfitting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Underfitting">Underfitting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Overfitting">Overfitting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Finding-the-Right-Balance">Finding the Right Balance</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Regression-with-Scikit-Learn">Regression with Scikit-Learn</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#STEP-5.-Prediction">STEP 5. Prediction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Multiple-Linear-Regression-With-scikit-learn">Multiple Linear Regression With scikit-learn</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Yavar
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024, Yavar.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
